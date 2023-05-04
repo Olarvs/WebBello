@@ -146,17 +146,29 @@ require_once '../components/navbarDashboard.php';
     </section>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script defer>
-window.onload = async function(){
 
+const usersTr = document.querySelector('#usersData');
+
+window.onload = async function(){
+    //api
   const getUsers =  await fetch("../api/admin/all-users.php");
   const response = await getUsers.json();
-
+    console.log(response)
   if(response.responseStatus === 'OK'){
+
     let content = '';
 
     response.responseContent.map((users)=>{
-        content += `<td class="px-4 py-3">`+users.firstname+`</td>`
+        content += `<td class="px-4 py-3">`+users.firstname+" "+users.firstname+`</td>
+        <td class="px-4 py-3">`+users.email+`</td>
+        <td class="px-4 py-3">`+users.status+`</td>
+        <td class="px-4 py-3">`+users.position+`</td>
+        <td class="px-4 py-3">`+users.last_login+`</td>
+        `
     })
+    
+    usersTr.innerHTML = content;
+
   }
 }
 </script>
