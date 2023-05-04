@@ -91,12 +91,12 @@ require_once '../components/navbarDashboard.php';
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="border-b dark:border-gray-700" id ="usersData">
+                    <tbody id ="usersTblBody">
+                        
                           
                             
                          
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -147,7 +147,7 @@ require_once '../components/navbarDashboard.php';
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script defer>
 
-const usersTr = document.querySelector('#usersData');
+const usersTblBody = document.querySelector('#usersTblBody');
 
 window.onload = async function(){
     //api
@@ -159,15 +159,18 @@ window.onload = async function(){
     let content = '';
 
     response.responseContent.map((users)=>{
-        content += `<td class="px-4 py-3">`+users.firstname+" "+users.firstname+`</td>
+        content += `<tr class="border-b dark:border-gray-700">
+        <td class="px-4 py-3">`+users.firstname+" "+users.firstname+`</td>
         <td class="px-4 py-3">`+users.email+`</td>
         <td class="px-4 py-3">`+users.status+`</td>
         <td class="px-4 py-3">`+users.position+`</td>
         <td class="px-4 py-3">`+users.last_login+`</td>
+        </tr>
         `
     })
-    
-    usersTr.innerHTML = content;
+   
+
+    usersTblBody.innerHTML = content;
 
   }
 }
