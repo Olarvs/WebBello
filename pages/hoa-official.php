@@ -163,7 +163,7 @@ require_once('../components/navbarDashboard.php')
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add new home owner</h3>
-                <form class="space-y-6" action="#">
+                <form class="space-y-6" action="#" id ="frmRegisterHOA">
                     <div>
                         <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
                         <input type="firstname" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
@@ -201,9 +201,18 @@ require_once('../components/navbarDashboard.php')
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script defer>
 
+//table body
 const usersTblBody = document.querySelector('#usersTblBody');
+//form
+const frmRegisterHOA = document.querySelector('#frmRegisterHOA')
 
-window.onload = async function(){
+//Onload
+window.onload = function(){
+    loadTable();
+}
+
+//load table
+const loadTable = async function(){
     //api
   const getUsers =  await fetch("../api/hoa/all-hoa.php");
   const response = await getUsers.json();
@@ -255,6 +264,35 @@ window.onload = async function(){
     usersTblBody.innerHTML = content;
 
   }
+}//end of onload
+
+
+frmRegisterHOA.addEventListener('submit', async (event) =>{
+    event.preventDefault()
+    formData = new FormData(frmRegisterHOA)
+    formData.append('password', 'default1234')
+// uncomment this to print all the content of formData
+//     for (const [key, value] of formData.entries()) {
+//   console.log(`${key}: ${value}`);
+// }
+
+//fetch data
+  const request =  await fetch("../api/hoa/register-new-hoa.php",{
+    method: "POST",
+    body:formData,
+  });
+
+//get the response
+
+const response = await request.json();
+
+if(response.responseStatus === 'success'){
+    //reload table
+    location.reload()
 }
+
+})
+
+
 </script>
 </body>
