@@ -112,7 +112,7 @@ if(currentPage === 'hoa-official.php'){
 
 }
 
-if(currentPage === 'resident-information.php'){
+if(currentPage === 'resident-official.php'){
   linkDashboard.className = notSelectedDesign;
   linkUser.className = notSelectedDesign;
   linklinkHoa.className = notSelectedDesign;
