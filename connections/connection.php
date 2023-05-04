@@ -7,7 +7,7 @@ function connection(){
     $host = "localhost";
     $username = "root";
     $password = "";
-    $database = "db_innersparc_sales";
+    $database = "db_web_bello";
 
  
     $con = new mysqli($host, $username, $password, $database,);
