@@ -157,7 +157,6 @@ window.onload = async function(){
   if(response.responseStatus === 'OK'){
 
     let content = '';
-
     response.responseContent.map((users)=>{
         content += `<tr class="border-b dark:border-gray-700">
         <td class="px-4 py-3">`+users.firstname+" "+users.firstname+`</td>

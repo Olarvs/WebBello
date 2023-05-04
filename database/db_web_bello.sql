@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 10:14 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 04, 2023 at 01:29 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_residents`
+--
+
+CREATE TABLE `tbl_residents` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `sex` varchar(10) NOT NULL,
+  `age` int(11) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `contact` int(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(10) NOT NULL DEFAULT 'Active'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_residents`
+--
+
+INSERT INTO `tbl_residents` (`id`, `firstname`, `lastname`, `sex`, `age`, `address`, `contact`, `email`, `created_at`, `status`) VALUES
+(1, 'Sample', 'Demo', 'Male', 25, 'B12 L34, Nowhere St. Brgy. Secret', 912345612, 'dummy@gmail.com', '2023-05-04 00:00:00', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_users`
 --
 
@@ -37,7 +63,7 @@ CREATE TABLE `tbl_users` (
   `email` varchar(100) NOT NULL,
   `position` varchar(20) NOT NULL DEFAULT 'Admin',
   `last_login` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_users`
@@ -52,6 +78,12 @@ INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `added_at`, `password`, 
 --
 
 --
+-- Indexes for table `tbl_residents`
+--
+ALTER TABLE `tbl_residents`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
@@ -60,6 +92,12 @@ ALTER TABLE `tbl_users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_residents`
+--
+ALTER TABLE `tbl_residents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
