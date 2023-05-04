@@ -8,12 +8,12 @@ require_once '../components/navbar.php';
 <div class="flex justify-center items-center h-screen ">
 <form class ="w-96 p-5" id = "frmLogin" action = "#">
 <div class ="mt-3">
-<label for="Email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+<label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
   <input type="text" id="email" class="bg-gray-50 border border-gray-500 text-gray-900 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-400" placeholder="sample@gmail.com" required>
   <p class="mt-2 text-sm text-gray-600 dark:text-gray-500 hidden"><span class="font-medium">Oops!</span> Username already taken!</p>
 </div>
 <div class ="mt-3">
-<label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+<label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
   <input type="password" id="password" class="bg-gray-50 border border-gray-500 text-gray-900 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-400" required>
   <p class="mt-2 text-sm text-gray-600 dark:text-gray-500 hidden"><span class="font-medium">Oops!</span> Username already taken!</p>
 </div>
