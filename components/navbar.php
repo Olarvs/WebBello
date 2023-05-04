@@ -18,7 +18,7 @@ if (isset($_SESSION['ID'])) {
 
 </head>
 
-<body class="flex justify-center items-center h-screen "> 
+<body > 
   <?php 
   if(isset($_SESSION['ID'])){
     echo '<nav class="bg-white border-gray-200 dark:bg-gray-900">

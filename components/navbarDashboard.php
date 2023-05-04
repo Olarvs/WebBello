@@ -15,10 +15,10 @@ if (!isset($_SESSION['ID'])) {
   <meta content="" name="keywords">
   <link rel="stylesheet" href="../style.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
-</style>
+
 </head>
 
-<body > 
+<body> 
   <?php 
   if(isset($_SESSION['ID'])){
     echo '<nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -105,8 +105,8 @@ if(currentPage === 'commission.php'){
 
 </script>
 <script>
-  var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+let themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+let themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
 // Change the icons inside the button based on previous settings
 if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -115,7 +115,7 @@ if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localS
     themeToggleDarkIcon.classList.remove('hidden');
 }
 
-var themeToggleBtn = document.getElementById('theme-toggle');
+let themeToggleBtn = document.getElementById('theme-toggle');
 
 themeToggleBtn.addEventListener('click', function() {
 

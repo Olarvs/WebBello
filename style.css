@@ -1264,6 +1264,10 @@ input:checked + .toggle-bg {
   max-width: 1280px;
 }
 
+.max-w-screen-2xl {
+  max-width: 1536px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
