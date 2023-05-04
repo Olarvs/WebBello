@@ -40,7 +40,10 @@ if (!isset($_SESSION['ID'])) {
             <a href="users.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" id ="linkUsers">Users</a>
           </li>
           <li>
-            <a href="commission.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" id = "linkCommission">Commission</a>
+            <a href="hoa-official.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" id ="linkHoa">Home owner</a>
+          </li>
+          <li>
+            <a href="resident-information.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" id ="linkResident">Resident</a>
           </li>
           <li>
             <a href="logout.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" id ="linkLogout">Logout</a>
@@ -63,9 +66,9 @@ if (!isset($_SESSION['ID'])) {
 
 const linkUser = document.querySelector('#linkUsers')
 const linkDashboard = document.querySelector('#linkDashboard')
-const linkCommission = document.querySelector('#linkCommission')
+const linklinkHoa = document.querySelector('#linkHoa')
 const linkLogout = document.querySelector('#linkLogout')
-
+const linkResident =document.querySelector('#linkResident')
 //designs
 
 const selectedDesign = "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
@@ -87,24 +90,38 @@ currentPage = lastPartOfUrl
 
 if(currentPage === 'dashboard.php'){
   linkDashboard.className = selectedDesign;
-  linkCommission.className = notSelectedDesign;
-  linkUser.className =notSelectedDesign;
+  linkUser.className = notSelectedDesign;
+  linklinkHoa.className = notSelectedDesign;
+  linkResident.className =notSelectedDesign;
+
 }
 
 if(currentPage === 'users.php'){
   linkDashboard.className = notSelectedDesign;
-  linkCommission.className = notSelectedDesign;
   linkUser.className = selectedDesign;
+  linklinkHoa.className = notSelectedDesign;
+  linkResident.className =notSelectedDesign;
+
 }
 
-if(currentPage === 'commission.php'){
+if(currentPage === 'hoa-official.php'){
   linkDashboard.className = notSelectedDesign;
-  linkCommission.className = selectedDesign;
-  linkUser.className =notSelectedDesign;
+  linkUser.className = notSelectedDesign;
+  linklinkHoa.className = selectedDesign;
+  linkResident.className =notSelectedDesign;
+
+}
+
+if(currentPage === 'resident-information.php'){
+  linkDashboard.className = notSelectedDesign;
+  linkUser.className = notSelectedDesign;
+  linklinkHoa.className = notSelectedDesign;
+  linkResident.className = selectedDesign;
 }
 
 </script>
-<script>
+<script defer>
+  //Dark theme toggle 
 let themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 let themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
