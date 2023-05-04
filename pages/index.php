@@ -43,7 +43,7 @@ frmLogin.addEventListener('submit' , async (event) =>{
   const getResponse = await fetchResponse.json();
   console.log(getResponse)
   if(getResponse.responseStatus === 'success'){
-    window.location = '/InnerSPARC-Sales-System/pages/dashboard.php';
+    window.location = '/web-bello/pages/dashboard.php';
   }
 })
 </script>

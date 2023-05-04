@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./*.{html,js,php}",  "./components/**/*.php",
   "./pages/**/*.php", "./node_modules/flowbite/**/*.js",],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
