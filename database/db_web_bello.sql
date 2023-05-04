@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 01:29 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 04, 2023 at 01:41 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_hoa`
+--
+
+CREATE TABLE `tbl_hoa` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `zip_code` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` varchar(50) NOT NULL DEFAULT 'admin',
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='7';
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_residents`
 --
 
@@ -38,7 +58,7 @@ CREATE TABLE `tbl_residents` (
   `email` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `status` varchar(10) NOT NULL DEFAULT 'Active'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_residents`
@@ -63,7 +83,7 @@ CREATE TABLE `tbl_users` (
   `email` varchar(100) NOT NULL,
   `position` varchar(20) NOT NULL DEFAULT 'Admin',
   `last_login` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_users`
@@ -76,6 +96,12 @@ INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `added_at`, `password`, 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_hoa`
+--
+ALTER TABLE `tbl_hoa`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_residents`
@@ -92,6 +118,12 @@ ALTER TABLE `tbl_users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_hoa`
+--
+ALTER TABLE `tbl_hoa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_residents`
