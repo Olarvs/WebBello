@@ -1,7 +1,7 @@
 <?php
     session_start();//if there is no session then start session
 if (isset($_SESSION['ID'])) {
-  header('Location: /web-bello/pages/dashboard.php');
+  header('Location: /web-bello/user/index.php');
   exit();
 }
 ?>
