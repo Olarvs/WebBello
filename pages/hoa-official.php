@@ -58,7 +58,7 @@ th.sort-desc::after {
                                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" id ="searchInput">
+                            <input type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" id ="searchInput"  />
                         </div>
                     </form>
                 </div>
@@ -144,7 +144,8 @@ th.sort-desc::after {
                     </tbody>
                 </table>
             </div>
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+            <!-- Footer -->
+            <!-- <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Showing
                     <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
@@ -184,7 +185,7 @@ th.sort-desc::after {
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
     </div>
     </section>
@@ -244,11 +245,11 @@ th.sort-desc::after {
 //table body
 const usersTblBody = document.querySelector('#usersTblBody');
 //form
-const frmRegisterHOA = document.querySelector('#frmRegisterHOA')
+const frmRegisterHOA = document.querySelector('#frmRegisterHOA');
 
 //search input
-const searchInput = document.querySelector('#searchInput')
-
+const searchInput = document.querySelector('#searchInput');
+console.log(searchInput.value)
 //Onload
 window.onload = function(){
     loadTable();
