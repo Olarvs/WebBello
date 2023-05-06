@@ -1,7 +1,46 @@
 <?php 
 require_once '../components/navbarDashboard.php';
 ?>
+<style>
+    th {
+  cursor: pointer;
+  position: relative;
+}
 
+th::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+th.sort-asc::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid currentColor;
+}
+
+th.sort-desc::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+}
+</style>
 <body class ="h-screen w-screen">
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div clas="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -78,14 +117,14 @@ require_once '../components/navbarDashboard.php';
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id ="tblUsers">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3">Full name</th>
-                            <th scope="col" class="px-4 py-3">Email</th>
-                            <th scope="col" class="px-4 py-3">Status</th>
-                            <th scope="col" class="px-4 py-3">Position</th>
-                            <th scope="col" class="px-4 py-3">Last login</th>
+                            <th scope="col" class="px-4 py-3" onClick="addTableSorting(tblUsers);" >Full name</th>
+                            <th scope="col" class="px-4 py-3" onClick="addTableSorting(tblUsers);">Email</th>
+                            <th scope="col" class="px-4 py-3" onClick="addTableSorting(tblUsers);">Status</th>
+                            <th scope="col" class="px-4 py-3" onClick="addTableSorting(tblUsers);">Position</th>
+                            <th scope="col" class="px-4 py-3" onClick="addTableSorting(tblUsers);">Last login</th>
                             <th scope="col" class="px-4 py-3">
                                 <span class="sr-only">Actions</span>
                             </th>
@@ -148,7 +187,7 @@ require_once '../components/navbarDashboard.php';
 <script defer>
 
 const usersTblBody = document.querySelector('#usersTblBody');
-
+const tblUsers =document.querySelector('#tblUsers')
 window.onload = async function(){
     //api
   const getUsers =  await fetch("../api/admin/all-users.php");
@@ -173,5 +212,37 @@ window.onload = async function(){
 
   }
 }
+
+//sort table
+const addTableSorting = (tableElement) => {
+  const thElements = tableElement.querySelectorAll('th');
+ 
+  thElements.forEach((thElement) => {
+    thElement.addEventListener('click', () => {
+      const isAscending = thElement.getAttribute('data-order') === 'asc';
+      const columnIndex = Array.from(thElement.parentNode.children).indexOf(thElement);
+      const tbodyElement = tableElement.querySelector('tbody');
+      const rows = Array.from(tbodyElement.querySelectorAll('tr'));
+
+      const sortedRows = rows.sort((a, b) => {
+        const aCellValue = a.children[columnIndex].textContent.trim();
+        const bCellValue = b.children[columnIndex].textContent.trim();
+
+        if (aCellValue < bCellValue) {
+          return isAscending ? -1 : 1;
+        }
+        if (aCellValue > bCellValue) {
+          return isAscending ? 1 : -1;
+        }
+        return 0;
+      });
+
+      tbodyElement.append(...sortedRows);
+
+      thElement.setAttribute('data-order', isAscending ? 'desc' : 'asc');
+    });
+  });
+};
+
 </script>
 </body>

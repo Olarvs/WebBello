@@ -2,6 +2,46 @@
 require_once('../components/navbarDashboard.php')
 ?>
 
+<style>
+    th {
+  cursor: pointer;
+  position: relative;
+}
+
+th::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+th.sort-asc::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid currentColor;
+}
+
+th.sort-desc::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+}
+</style>
 
 <body  >
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 flex h-screen w-full">
@@ -18,7 +58,7 @@ require_once('../components/navbarDashboard.php')
                                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+                            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" id ="searchInput">
                         </div>
                     </form>
                 </div>
@@ -81,15 +121,15 @@ require_once('../components/navbarDashboard.php')
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id ="tblHOA">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3">Full Name</th>
-                            <th scope="col" class="px-4 py-3">Email</th>
-                            <th scope="col" class="px-4 py-3">Role</th>
-                            <th scope="col" class="px-4 py-3">Address</th>
-                            <th scope="col" class="px-4 py-3">Status</th>
-                            <th scope="col" class="px-4 py-3">Date Created</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Full Name</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Email</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Role</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Address</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Status</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Date Created</th>
                             <th scope="col" class="px-4 py-3">
                                 <span class="sr-only">Actions</span>
                             </th>
@@ -206,6 +246,9 @@ const usersTblBody = document.querySelector('#usersTblBody');
 //form
 const frmRegisterHOA = document.querySelector('#frmRegisterHOA')
 
+//search input
+const searchInput = document.querySelector('#searchInput')
+
 //Onload
 window.onload = function(){
     loadTable();
@@ -294,5 +337,53 @@ if(response.responseStatus === 'success'){
 })
 
 
+
+//sort table
+const addTableSorting = (tableElement) => {
+  const thElements = tableElement.querySelectorAll('th');
+ 
+  thElements.forEach((thElement) => {
+    thElement.addEventListener('click', () => {
+      const isAscending = thElement.getAttribute('data-order') === 'asc';
+      const columnIndex = Array.from(thElement.parentNode.children).indexOf(thElement);
+      const tbodyElement = tableElement.querySelector('tbody');
+      const rows = Array.from(tbodyElement.querySelectorAll('tr'));
+
+      const sortedRows = rows.sort((a, b) => {
+        const aCellValue = a.children[columnIndex].textContent.trim();
+        const bCellValue = b.children[columnIndex].textContent.trim();
+
+        if (aCellValue < bCellValue) {
+          return isAscending ? -1 : 1;
+        }
+        if (aCellValue > bCellValue) {
+          return isAscending ? 1 : -1;
+        }
+        return 0;
+      });
+
+      tbodyElement.append(...sortedRows);
+
+      thElement.setAttribute('data-order', isAscending ? 'desc' : 'asc');
+    });
+  });
+};
+
+
+//search function
+searchInput.addEventListener('input', () => {
+  const searchValue = searchInput.value.toLowerCase().trim();
+  const rows = usersTblBody.querySelectorAll('tr');
+
+  rows.forEach((row) => {
+    const cols = Array.from(row.querySelectorAll('td'));
+
+    if (cols.some((col) => col.textContent.toLowerCase().includes(searchValue))) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+});
 </script>
 </body>
