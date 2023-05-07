@@ -1,10 +1,3 @@
-<?php
-    session_start();//if there is no session then start session
-if (isset($_SESSION['ID'])) {
-  header('Location: /web-bello/user/index.php');
-  exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +13,7 @@ if (isset($_SESSION['ID'])) {
 
 <body > 
   <?php 
-  if(isset($_SESSION['ID'])){
+  
     echo '<nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="https://flowbite.com/" class="flex items-center">
@@ -59,7 +52,6 @@ if (isset($_SESSION['ID'])) {
     </div>
   </nav>
   ';
-  }
   ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
