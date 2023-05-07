@@ -41,8 +41,8 @@ th.sort-desc::after {
   border-top: 4px solid currentColor;
 }
 </style>
-<body class ="h-screen w-screen">
-    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+<body >
+    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 flex h-screen w-full">
     <div clas="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
