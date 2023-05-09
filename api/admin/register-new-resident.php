@@ -13,13 +13,6 @@ $Address = $_POST['address'];
 $Contact = $_POST['contact'];
 $Email = $_POST['email'];
 
-// <td class="px-4 py-3">`+residents.firstname+" "+residents.lastname+`</td>
-// <td class="px-4 py-3">`+residents.age+`</td>
-// <td class="px-4 py-3">`+residents.sex+`</td>
-// <td class="px-4 py-3">`+residents.address+`</td>
-// <td class="px-4 py-3">`+residents.contact+`</td>
-// <td class="px-4 py-3">`+residents.email+`</td>
-// <td class="px-4 py-3">`+residents.status+`</td>
 try{
     
 
