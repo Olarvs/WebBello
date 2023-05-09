@@ -15,8 +15,6 @@ $Email = $_POST['email'];
 
 try{
     
-
-
     $sql = "INSERT INTO `tbl_residents` (`firstname`,`lastname`,`sex`,`age`,`address`,`contact`,`email`) VALUES ('$Firstname','$Lastname','$Sex','$Age','$Address','$Contact','$Email');";
     mysqli_query($con, $sql);
 
