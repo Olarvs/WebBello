@@ -43,7 +43,7 @@ th.sort-desc::after {
 }
 </style>
 
-<body  >
+<body class ="-ml-96">
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 flex h-screen w-full">
     <div class="mx-auto w-full px-4 lg:px-12">
         <!-- Start coding here -->
@@ -304,6 +304,13 @@ th.sort-desc::after {
     </div>
 </div>
 
+
+</div>
+    </main>
+  </div>
+
+
+
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script defer>
 
@@ -372,7 +379,7 @@ const loadTable = async function(){
              
              <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
              id ="btnDelete`+users.id+`"
-             data-user='`+JSON.stringify(users)+`' onclick="updateModal(this)">
+             data-user='`+JSON.stringify(users)+`' onclick="deleteModal(this)">
               Delete
              </button>
         </div>                
@@ -491,7 +498,30 @@ searchInput.addEventListener('input', () => {
   });
 });
 
+//Delete Modal
+
+const deleteModal = async (button) =>{
+    const dataJson = button.getAttribute('data-user');
+    const user = JSON.parse(dataJson);
+    console.log(user)
+
+    formData = new FormData();
+    formData.append('IdDelete', user.id)
+    const request =  await fetch("../api/hoa/delete-hoa.php",{
+    method: "POST",
+    body:formData,
+    });
+
+    const response = await request.json();
+    console.log(response)
+    if(response.responseStatus === 'success'){
+        location.reload()
+    }
+}
+
 //Update modal
+
+
 
 const updateModal = (button) =>{
 
