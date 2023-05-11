@@ -363,7 +363,7 @@ const loadTable = async function(){
         }
 
         content += `<tr class="border-b dark:border-gray-700">
-        <td class="px-4 py-3">`+users.firstname+" "+users.firstname+`</td>
+        <td class="px-4 py-3">`+users.firstname+" "+users.lastname+`</td>
         <td class="px-4 py-3">`+users.email+`</td>
         <td class="px-4 py-3">`+users.role+`</td>
         <td class="px-4 py-3">`+users.address+`</td>
@@ -399,9 +399,9 @@ frmRegisterHOA.addEventListener('submit', async (event) =>{
     formData = new FormData(frmRegisterHOA)
     formData.append('password', 'default1234')
 // uncomment this to print all the content of formData
-//     for (const [key, value] of formData.entries()) {
-//   console.log(`${key}: ${value}`);
-// }
+    for (const [key, value] of formData.entries()) {
+  console.log(`${key}: ${value}`);
+}
 
 //fetch data
   const request =  await fetch("../api/hoa/register-new-hoa.php",{
@@ -443,7 +443,7 @@ const response = await request.json();
 
 if(response.responseStatus === 'success'){
     //reload table
-    this.close()
+    showSuccessToast()
     location.reload()
 }
 
