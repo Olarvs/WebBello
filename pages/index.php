@@ -16,7 +16,16 @@ if (isset($_SESSION['ID'])) {
     <meta content="" name="keywords">
     <link rel="stylesheet" href="../style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80');
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* Add any additional background styling here */
+        }
 
+        /* Additional styles for other elements on the page */
+    </style>
 </head>
 
 <body>
@@ -24,7 +33,7 @@ if (isset($_SESSION['ID'])) {
     <!-- Old Login -->
 
     <div class="flex justify-center items-center h-screen ">
-        <form class="w-96 p-5" id="frmLogin" action="#">
+        <form class="w-96 p-5 bg-gray-100 rounded-lg" id="frmLogin" action="#">
             <div class="mt-3">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                 <input type="text" id="email"
