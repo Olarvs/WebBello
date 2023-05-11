@@ -1,5 +1,7 @@
 <?php 
 require_once('../components/navbarDashboard.php')
+
+
 ?>
 
 <style>
@@ -63,9 +65,9 @@ th.sort-desc::after {
                     </form>
                 </div>
 
-               
+            
                 <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                   <button type="button" class="flex: items-center justify-center focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" >New home owner</button>
+                   <button type="button" class="flex: items-center justify-center focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" >New forum</button>
                     <div class="flex items-center space-x-3 w-full md:w-auto">
                         <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown" class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
                             <svg class="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -124,11 +126,11 @@ th.sort-desc::after {
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id ="tblHOA">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Full Name</th>
-                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Email</th>
-                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Role</th>
-                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Address</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Title</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Message</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Category</th>
                             <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Status</th>
+                            <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Editor</th>
                             <th scope="col" class="px-4 py-3" onClick ="addTableSorting(tblHOA)">Date Created</th>
                             <th scope="col" class="px-4 py-3">
                                 <span class="sr-only">Actions</span>
@@ -160,41 +162,35 @@ th.sort-desc::after {
     <div class="relative w-full max-w-md max-h-full">
 
         <!-- Modal content -->
-        
+         <input type ="hidden" name ="emailEditor" id ="emailEditor" value ="<?php echo $result[0]['email']?>">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add new home owner</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add Forum</h3>
                 <form class="space-y-6" action="#" id ="frmRegisterHOA">
                     <div>
-                        <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-                        <input type="firstname" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                        <input type="title" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
                     </div>
                     <div>
-                        <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                        <input type="lastname" name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                    <label for="message_body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message</label>
+                        <textarea id="message_body" name ="message_body" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Write your post here..."></textarea>
                     </div>
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-                    </div>
-                    <div>
-                        <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                            <select id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                            <option selected>Choose a role</option>
-                            <option value="Admin">Admin</option>
-                            <option value="Board member">Board member</option>
-                            <option value="Home owner">Home owner</option>
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            <select id="category" name ="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                            <option selected>Choose a category</option>
+                            <option value="Announcement">Announcement</option>
+                            <option value="Collecting Schedule">Collecting Schedule</option>
+                            <option value="Events">Events</option>
+                            <option value="Forum">Forum</option>
+                            <option value="News">News</option>
                             </select>
                     </div>
-                    <div>
-                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                        <input type="address" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-                    </div>
-                    <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800">Create Account</button>
+                    <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800">Create Forum</button>
                    
                 </form>
             </div>
@@ -226,40 +222,32 @@ th.sort-desc::after {
 
             </div>
             <form action="#" id ="updateHoaInformation">
-                <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                <div class="grid gap-4 mb-4 ">
                     <input type ="hidden" name ="idUpdate" id ="idUpdate" >
                     <div>
-                        <label for="firstnameUpdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-                        <input type="text" name="firstnameUpdate" id="firstnameUpdate"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                        <input type="title" name="titleUpdate" id="titleUpdate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
                     </div>
-
                     <div>
-                        <label for="lastnameUpdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                        <input type="text" name="lastnameUpdate" id="lastnameUpdate"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
+                    <label for="message_body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message</label>
+                        <textarea id="message_bodyUpdate" name ="message_bodyUpdate" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Write your post here..."></textarea>
                     </div>
-
                     <div>
-                        <label for="emailUpdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="text" name="emailUpdate" id="emailUpdate"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-                    </div>
-
-                    <div>
-                        <label for="addressUpdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                        <input type="text" name="addressUpdate" id="addressUpdate"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
-                    </div>
-                    
-                    <div>
-                        <label for="roleUpdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <select id="roleUpdate" name ="roleUpdate"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="admin">Admin</option>
-                            <option value="board member">Board member</option>
-                        </select>
+                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            <select id="categoryUpdate" name ="categoryUpdate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                            <option selected>Choose a category</option>
+                            <option value="Announcement">Announcement</option>
+                            <option value="Collecting Schedule">Collecting Schedule</option>
+                            <option value="Events">Events</option>
+                            <option value="Forum">Forum</option>
+                            <option value="News">News</option>
+                            </select>
                     </div>
                     <div>
                         <label for="statusUpdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="statusUpdate" name ="statusUpdate"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
                         </select>
                     </div>
                 </div>
@@ -307,6 +295,7 @@ th.sort-desc::after {
 
 
 
+
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script defer>
 
@@ -327,13 +316,14 @@ const updateProductButton =document.querySelector('#updateProductButton')
 //Update form modal 
 const updateHoaInformation = document.querySelector('#updateHoaInformation')
 
+//get email editor
+const emailEditor = document.querySelector('#emailEditor')
+
 //MODAL FIELDS
 const idUpdate =document.querySelector('#idUpdate')
-const firstnameUpdate =document.querySelector('#firstnameUpdate')
-const lastnameUpdate =document.querySelector('#lastnameUpdate')
-const emailUpdate = document.querySelector('#emailUpdate')
-const addressUpdate = document.querySelector('#addressUpdate')
-const roleUpdate =document.querySelector('#roleUpdate')
+const titleUpdate = document.querySelector('#titleUpdate')
+const message_bodyUpdate = document.querySelector('#message_bodyUpdate')
+const categoryUpdate = document.querySelector('#categoryUpdate')
 const statusUpdate =document.querySelector('#statusUpdate')
 
 
@@ -345,7 +335,7 @@ window.onload = function(){
 //load table
 const loadTable = async function(){
     //api
-  const getUsers =  await fetch("../api/hoa/all-hoa.php");
+  const getUsers =  await fetch("../api/forum/all-forum.php");
   const response = await getUsers.json();
     console.log(response)
   if(response.responseStatus === 'OK'){
@@ -356,16 +346,21 @@ const loadTable = async function(){
         let user = '<span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">Inactive</span>'
 
         //change the badge color to active if active
-        if(users.status === 'Active'){
+        if(users.status === 'active'){
           user =  '<span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">Active</span>'
         }
+        let messageTrucate = users.message_body
 
+        if(users.message_body.length > 30){
+            messageTrucate = users.message_body.substring(0, 30)
+            messageTrucate += '...';
+        }
         content += `<tr class="border-b dark:border-gray-700">
-        <td class="px-4 py-3">`+users.firstname+" "+users.firstname+`</td>
-        <td class="px-4 py-3">`+users.email+`</td>
-        <td class="px-4 py-3">`+users.role+`</td>
-        <td class="px-4 py-3">`+users.address+`</td>
+        <td class="px-4 py-3">`+users.title+`</td>
+        <td class="px-4 py-3">`+messageTrucate+`</td>
+        <td class="px-4 py-3">`+users.category+`</td>
         <td class="px-4 py-3">`+user+`</td>
+        <td class="px-4 py-3">`+users.editor_email+`</td>
         <td class="px-4 py-3">`+users.created_at+`</td>
         <td class="px-4 py-3 flex items-center justify-end">
         <div class="inline-flex rounded-md shadow-sm" role="group">
@@ -395,14 +390,14 @@ const loadTable = async function(){
 frmRegisterHOA.addEventListener('submit', async (event) =>{
     event.preventDefault()
     formData = new FormData(frmRegisterHOA)
-    formData.append('password', 'default1234')
+    formData.append('editor_email',emailEditor.value)
 // uncomment this to print all the content of formData
-//     for (const [key, value] of formData.entries()) {
-//   console.log(`${key}: ${value}`);
-// }
+    for (const [key, value] of formData.entries()) {
+  console.log(`${key}: ${value}`);
+}
 
 //fetch data
-  const request =  await fetch("../api/hoa/register-new-hoa.php",{
+  const request =  await fetch("../api/forum/add-forum.php",{
     method: "POST",
     body:formData,
   });
@@ -410,7 +405,7 @@ frmRegisterHOA.addEventListener('submit', async (event) =>{
 //get the response
 
 const response = await request.json();
-
+console.log(response)
 if(response.responseStatus === 'success'){
     //reload table
     location.reload()
@@ -424,12 +419,12 @@ updateHoaInformation.addEventListener('submit', async (event) =>{
     event.preventDefault()
     formData = new FormData(updateHoaInformation)
     // uncomment this to print all the content of formData
-//     for (const [key, value] of formData.entries()) {
-//   console.log(`${key}: ${value}`);
-// }
+    for (const [key, value] of formData.entries()) {
+  console.log(`${key}: ${value}`);
+}
 
 //fetch data
-const request =  await fetch("../api/hoa/update-hoa.php",{
+const request =  await fetch("../api/forum/update-forum.php",{
     method: "POST",
     body:formData,
   });
@@ -503,7 +498,7 @@ const deleteModal = async (button) =>{
 
     formData = new FormData();
     formData.append('IdDelete', user.id)
-    const request =  await fetch("../api/hoa/delete-hoa.php",{
+    const request =  await fetch("../api/forum/delete-forum.php",{
     method: "POST",
     body:formData,
     });
@@ -527,20 +522,15 @@ console.log(user)
 
 updateProductButton.click()
 
-// const firstnameUpdate =document.querySelector('#firstnameUpdate')
-// const lastnameUpdate =document.querySelector('#lastnameUpdate')
-// const emailUpdate = document.querySelector('#emailUpdate')
-// const addressUpdate = document.querySelector('#addressUpdate')
-// const roleUpdate =document.querySelector('#roleUpdate')
-// const statusUpdate =document.querySelector('#statusUpdate')
+// const titleUpdate = document.querySelector('#titleUpdate')
+// const message_bodyUpdate = document.querySelector('#message_bodyUpdate')
+// const categoryUpdate = document.querySelector('#categoryUpdate')
 
 //set the value of input fields
 idUpdate.value = user.id;
-firstnameUpdate.value = user.firstname;
-lastnameUpdate.value = user.lastname;
-emailUpdate.value = user.email;
-addressUpdate.value = user.address;
-roleUpdate.value = user.role;
+titleUpdate.value = user.title;
+message_bodyUpdate.value =user.message_body;
+categoryUpdate.value = user.category;
 statusUpdate.value = user.status;
 
 }
