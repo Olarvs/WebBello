@@ -33,28 +33,44 @@ if (isset($_SESSION['ID'])) {
     <!-- Old Login -->
 
     <div class="flex justify-center items-center h-screen ">
-        <form class="w-96 p-5 bg-gray-100 rounded-lg" id="frmLogin" action="#">
-            <div class="mt-3">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                <input type="text" id="email"
-                    class="bg-gray-50 border border-gray-500 text-gray-900 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-400"
-                    placeholder="sample@gmail.com" required>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-500 hidden"><span class="font-medium">Oops!</span>
-                    Username already taken!</p>
-            </div>
-            <div class="mt-3">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                <input type="password" id="password"
-                    class="bg-gray-50 border border-gray-500 text-gray-900 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-400"
-                    required>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-500 hidden"><span class="font-medium">Oops!</span>
-                    Username already taken!</p>
-            </div>
-            <button type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-3 w-full">Log
-                In</button>
-        </form>
+  <form class="w-96 p-5 bg-gray-100 rounded-lg" id="frmLogin" action="#">
+    <div class="text-center text-gray-900"><strong>LOGIN TO WEB-BELLO</strong></div>
+    <div class="mt-3">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+      <input type="text" id="email"
+        class="bg-gray-50 border border-gray-500 text-gray-900 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-400"
+        placeholder="sample@gmail.com" required>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-500 hidden"><span class="font-medium">Oops!</span>
+        Username already taken!</p>
     </div>
+    <div class="mt-3 relative">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+      <input type="password" id="password"
+        class="bg-gray-50 border border-gray-500 text-gray-900 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-400"
+        required>
+      <div class="flex items-center mt-2">
+        <input type="checkbox" id="show-password" class="mr-2" onclick="togglePassword()">
+        <label for="show-password" class="text-sm text-gray-900 font-medium cursor-pointer">Show password</label>
+      </div>
+    </div>
+    <button type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-3 w-full">Log
+      In</button>
+  </form>
+</div>
+
+<script>
+  function togglePassword() {
+    var passwordInput = document.getElementById("password");
+    var showPasswordCheckbox = document.getElementById("show-password");
+    if (showPasswordCheckbox.checked) {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  }
+</script>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
