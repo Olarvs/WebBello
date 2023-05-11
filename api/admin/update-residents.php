@@ -25,7 +25,7 @@ $Status = $_POST['statusUpdate'];
 
 try{
     
-    $sql = "UPDATE `tbl_hoa` SET `firstname` ='$Firstname',`lastname` ='$Lastname',`email` ='$Email',`address` ='$Address',`role` ='$Role',`status` = '$Status' WHERE `tbl_hoa`.`id` = '$ID';";
+    $sql = "UPDATE `tbl_residents` SET `firstname` ='$Firstname',`lastname` ='$Lastname',`sex` ='$Sex',`age` ='$Age',`address` ='$Address',`contact` ='$Contact',`email` ='$Email',`status` = '$Status' WHERE `tbl_residents`.`id` = '$ID';";
     mysqli_query($con, $sql);
 
    
