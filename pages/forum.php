@@ -46,9 +46,11 @@ th.sort-desc::after {
 </style>
 
 <body class ="-ml-96">
-    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 flex h-screen w-full">
+
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 flex h-screen w-full">
     <div class="mx-auto w-full px-4 lg:px-12">
         <!-- Start coding here -->
+
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <div class="w-full md:w-1/2">
@@ -149,9 +151,32 @@ th.sort-desc::after {
             
         </div>
     </div>
+  
+      
+<!-- TOASTER -->
+
+ 
+<div id="toast-success" class="hidden fixed flex items-center w-full max-w-xs p-4 mb-4 bottom-5 left-5 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+  <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="sr-only">Check icon</span>
+  </div>
+  <div class="ml-3 text-sm font-normal">Item moved successfully.</div>
+  <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+    <span class="sr-only">Close</span>
+    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+    </svg>
+  </button>
+</div>
+
+
     </section>
 
-    <!-- Add home owners modal -->
+
+
 <!-- MODALS -->
 
 
@@ -289,22 +314,10 @@ th.sort-desc::after {
     </div>
 </div>
 
-
-<div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
-  <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg>
-    <span class="sr-only">Check icon</span>
-  </div>
-  <div class="ml-3 text-sm font-normal">Item moved successfully.</div>
-  <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
-    <span class="sr-only">Close</span>
-    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-    </svg>
-  </button>
-</div>
+<!-- HIDDEN BUTTON -->
+<button data-modal-target="updateProductModal" data-modal-toggle="updateProductModal" class="hidden block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" id ="updateHiddenButton">
+  Toggle modal
+</button>
 
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
@@ -322,7 +335,7 @@ const searchInput = document.querySelector('#searchInput');
 const updateProductModal =document.querySelector('#updateProductModal')
 
 //triggerbutton
-const updateProductButton =document.querySelector('#updateProductButton')
+const updateHiddenButton =document.querySelector('#updateHiddenButton')
 
 //Update form modal 
 const updateHoaInformation = document.querySelector('#updateHoaInformation')
@@ -420,6 +433,8 @@ console.log(response)
 if(response.responseStatus === 'success'){
     //reload table
     location.reload()
+    localStorage.setItem('showToast', 'true');
+    localStorage.setItem('showToastMessage', 'Created successfully')
 }
 
 })
@@ -447,6 +462,8 @@ const response = await request.json();
 if(response.responseStatus === 'success'){
     //reload table
     location.reload()
+    localStorage.setItem('showToast', 'true');
+    localStorage.setItem('showToastMessage', 'Updated successfully')
 }
 
 })
@@ -518,7 +535,8 @@ const deleteModal = async (button) =>{
     console.log(response)
     if(response.responseStatus === 'success'){
         location.reload();
-        await showToast('Item moved successfully.');
+        localStorage.setItem('showToast', 'true');
+        localStorage.setItem('showToastMessage', 'Deleted successfully')
     }
 }
 
@@ -532,7 +550,7 @@ const updateModal = (button) =>{
     const user = JSON.parse(dataJson);
 console.log(user)
 
-updateProductButton.click()
+updateHiddenButton.click()
 
 // const titleUpdate = document.querySelector('#titleUpdate')
 // const message_bodyUpdate = document.querySelector('#message_bodyUpdate')
@@ -549,19 +567,25 @@ statusUpdate.value = user.status;
 
 
 //toaster 
-const showToast = (message, duration = 3000) => {
-  return new Promise((resolve) => {
-    const toast = document.querySelector('#toast-success');
-    const toastMessage = toast.querySelector('.font-normal');
-    toastMessage.textContent = message;
-    toast.classList.add('flex');
+const showToast = () => {
+  const toast = document.getElementById('toast-success')
+  const showToastFlag = localStorage.getItem('showToast')
+  const showToastMessage = localStorage.getItem('showToastMessage')
+  if (showToastFlag === 'true') {
+    const toastMessage = toast.querySelector('.font-normal')
+    toastMessage.textContent = showToastMessage
+    toast.classList.remove('hidden');
     
     setTimeout(() => {
-      toast.classList.remove('flex');
-      resolve();
-    }, duration);
-  });
+      toast.classList.add('hidden');
+      localStorage.removeItem('showToast');
+      localStorage.removeItem('showToastMessage')
+    }, 3000);
+  }
 };
+
+// Call showToast when the page loads
+document.addEventListener('DOMContentLoaded', showToast);
 </script>
 
 
