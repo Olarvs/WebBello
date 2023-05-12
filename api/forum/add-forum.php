@@ -24,7 +24,7 @@ try{
 
     $result = mysqli_fetch_all($sqlGet, MYSQLI_ASSOC);
 
-    exit(json_encode(array("responseStatus" =>'success', "responseContent" =>$result, "responseMessage" =>'Home owner has been added succesfull!')));
+    exit(json_encode(array("responseStatus" =>'success', "responseContent" =>$result, "responseMessage" =>'Forum has been added succesfully!')));
 
   
 }catch(Exception $e){

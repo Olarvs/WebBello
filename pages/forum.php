@@ -434,7 +434,7 @@ if(response.responseStatus === 'success'){
     //reload table
     location.reload()
     localStorage.setItem('showToast', 'true');
-    localStorage.setItem('showToastMessage', 'Created successfully')
+    localStorage.setItem('showToastMessage', response.responseMessage)
 }
 
 })
@@ -463,7 +463,7 @@ if(response.responseStatus === 'success'){
     //reload table
     location.reload()
     localStorage.setItem('showToast', 'true');
-    localStorage.setItem('showToastMessage', 'Updated successfully')
+    localStorage.setItem('showToastMessage', response.responseMessage)
 }
 
 })
@@ -536,7 +536,7 @@ const deleteModal = async (button) =>{
     if(response.responseStatus === 'success'){
         location.reload();
         localStorage.setItem('showToast', 'true');
-        localStorage.setItem('showToastMessage', 'Deleted successfully')
+        localStorage.setItem('showToastMessage', response.responseMessage)
     }
 }
 
