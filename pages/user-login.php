@@ -1,11 +1,11 @@
 <?php
-// session_start();//if there is no session then start session
-// if (isset($_SESSION['ID'])) {
-//     header('Location: /web-bello/pages/user-index.php');
-//     exit();
-//   }
+session_start();//if there is no session then start session
+if (isset($_SESSION['IDUSER'])) {
+    header('Location: /web-bello/pages/user-index.php');
+    exit();
+  }
 ?>
- 
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +21,9 @@
 </head>
 
 <body>
- <!-- Try Login Form -->
+    <!-- Try Login Form -->
 
- <!-- <section class="bg-gray-50 dark:bg-gray-900">
+    <!-- <section class="bg-gray-50 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
@@ -120,7 +120,7 @@
         formData = new FormData();
         formData.append('email', email.value)
         formData.append('password', password.value)
-        const fetchResponse = await fetch("../api/login/login.php", {
+        const fetchResponse = await fetch("../api/login/user-login.php", {
             method: "POST",
             body: formData,
         });
