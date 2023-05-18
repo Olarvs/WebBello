@@ -3,25 +3,25 @@ session_start(); //if there is no session then start session
 include_once("../connections/connection.php");
 $con = connection();
 if (!isset($_SESSION['IDUSER'])) {
-  header('Location: /web-bello/pages/user-login.php');
-  exit();
+    header('Location: /web-bello/pages/user-login.php');
+    exit();
 } else {
 
-  $sql = mysqli_query($con, "SELECT * FROM `tbl_residents` WHERE `id` = {$_SESSION['IDUSER']}");
+    $sql = mysqli_query($con, "SELECT * FROM `tbl_residents` WHERE `id` = {$_SESSION['IDUSER']}");
 
-  //store in result
+    //store in result
 
-  $result = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+    $result = mysqli_fetch_all($sql, MYSQLI_ASSOC);
 
-  // Get the current URL
-  $url = $_SERVER['REQUEST_URI'];
+    // Get the current URL
+    $url = $_SERVER['REQUEST_URI'];
 
-  // Extract the page name from the URL
-  $pageName = basename($url, '.php');
+    // Extract the page name from the URL
+    $pageName = basename($url, '.php');
 
-  // Remove hyphens and replace them with spaces
-  $pageName = str_replace('-', ' ', $pageName);
-  $pageName = strtoupper($pageName);
+    // Remove hyphens and replace them with spaces
+    $pageName = str_replace('-', ' ', $pageName);
+    $pageName = strtoupper($pageName);
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['IDUSER'])) {
 
 </head>
 
-<body style="background-color: #000d1a;">
+<body class="bg-white dark:bg-gray-900">
 
     <!-- Forum page with sidebar and navbar -->
 
@@ -73,74 +73,49 @@ if (!isset($_SESSION['IDUSER'])) {
                         </svg>
                     </button> -->
 
-            <!-- User Account Settings -->
-            <button
-            type="button"
-            class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="dropdown"
-          >
-            <span class="sr-only">Open user menu</span>
-            <img
-              class="w-8 h-8 rounded-full"
-              src="https://cdn.vectorstock.com/i/preview-1x/32/12/default-avatar-profile-icon-vector-39013212.jpg"
-              alt="user photo"
-            />
-          </button>
-          <!-- Dropdown menu -->
-          <div
-            class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
-            id="dropdown"
-          >
-            <div class="py-3 px-4">
-          
+                    <!-- User Account Settings -->
+                    <button type="button"
+                        class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="w-8 h-8 rounded-full"
+                            src="https://cdn.vectorstock.com/i/preview-1x/32/12/default-avatar-profile-icon-vector-39013212.jpg"
+                            alt="user photo" />
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+                        id="dropdown">
+                        <div class="py-3 px-4">
 
-              <span
-                class="block text-sm font-semibold text-gray-900 dark:text-white"
-                ><?php echo $result[0]['firstname'].' '.$result[0]['lastname']?></span
-                ></span
-              >
-              <span
-                class="block text-sm text-gray-900 truncate dark:text-white"
-                ><?php echo $result[0]['email']?></span
-              >
-            </div>
-            <ul
-              class="py-1 text-gray-700 dark:text-gray-300"
-              aria-labelledby="dropdown"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                  >My profile</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                  >Account settings</a
-                >
-              </li>
-            </ul>
-          
-            <ul
-              class="py-1 text-gray-700 dark:text-gray-300"
-              aria-labelledby="dropdown"
-            >
-              <li>
-                <a
-                  href="/web-bello/pages/logout.php"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Sign out</a
-                >
-              </li>
-            </ul>
-          </div>
+
+                            <span
+                                class="block text-sm font-semibold text-gray-900 dark:text-white"><?php echo $result[0]['firstname'] . ' ' . $result[0]['lastname'] ?></span></span>
+                            <span
+                                class="block text-sm text-gray-900 truncate dark:text-white"><?php echo $result[0]['email'] ?></span>
+                        </div>
+                        <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My
+                                    profile</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account
+                                    settings</a>
+                            </li>
+                        </ul>
+
+                        <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                            <li>
+                                <a href="/web-bello/pages/logout.php"
+                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                    out</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                
+
                 <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <!-- <li>
