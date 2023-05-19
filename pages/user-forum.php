@@ -248,7 +248,7 @@ if (!isset($_SESSION['IDUSER'])) {
         </div>
     </aside>
 
-    <main class="p-4 sm:ml-64 h-auto pt-20" id="forumMain">
+    <main class="p-4 sm:ml-64 h-auto pt-2" id="forumMain">
         <!-- FORUM -->
 
 
@@ -270,7 +270,7 @@ if (!isset($_SESSION['IDUSER'])) {
         const response = await request.json()
         content = ''
         response.responseContent.map((forum) => {
-            content += `  <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 mt-2">
+            content += `  <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
             <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4 mb-4">
                 <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
                     <footer class="flex justify-between items-center mb-2">
