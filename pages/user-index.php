@@ -2,17 +2,25 @@
 require_once('../components/navbar.php')
 ?>
 
+<style>
+.custom-bg {
+    background-image: url('../images/p-bello.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+</style>
+
 <body>
 
     <!-- LANDING PAGE SECTION PLUS LOGIN FORM -->
 
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-white dark:bg-gray-900 custom-bg">
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1
                     class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                     Welcome to Web-Bello!</h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Stay
+                <p class="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-white">Stay
                     connected, informed, and inspired! Join a vibrant community, connect effortlessly with neighbors,
                     and be in the loop with news, events, and alerts. Experience a friendly platform that enriches your
                     homeowner journey.</p>
