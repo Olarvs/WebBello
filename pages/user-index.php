@@ -4,7 +4,7 @@ require_once('../components/navbar.php')
 
 <style>
 .custom-bg {
-    background-image: url('../images/p-bello.jpg');
+    background-image: url('../images/palazzo-gradient-1.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -20,14 +20,13 @@ require_once('../components/navbar.php')
                 <h1
                     class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                     Welcome to Web-Bello!</h1>
-                <p class="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-white">Stay
+                <p class="max-w-2xl mb-6 font-medium text-white lg:mb-8 md:text-lg lg:text-xl dark:text-white">
+                    Stay
                     connected, informed, and inspired! Join a vibrant community, connect effortlessly with neighbors,
                     and be in the loop with news, events, and alerts. Experience a friendly platform that enriches your
                     homeowner journey.</p>
-
-
             </div>
-            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+            <div class="lg:mt-0 lg:col-span-5 lg:flex">
                 <div
                     class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
