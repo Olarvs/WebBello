@@ -21,10 +21,10 @@ require_once('../components/navbar.php')
                     class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                     Welcome to Web-Bello!</h1>
                 <p class="max-w-2xl mb-6 font-medium text-white lg:mb-8 md:text-lg lg:text-xl dark:text-white">
-                    Stay
-                    connected, informed, and inspired! Join a vibrant community, connect effortlessly with neighbors,
-                    and be in the loop with news, events, and alerts. Experience a friendly platform that enriches your
-                    homeowner journey.</p>
+                    The
+                    ultimate hub for homeowners to stay connected and informed! With Web-Bello, you can easily connect
+                    with your neighbors, stay informed on the latest news and events, and receive important alerts and
+                    notifications.</p>
             </div>
             <div class="lg:mt-0 lg:col-span-5 lg:flex">
                 <div
