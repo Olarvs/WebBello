@@ -43,7 +43,7 @@ if (!isset($_SESSION['IDUSER'])) {
     <!-- Forum page with sidebar and navbar -->
 
     <div class="antialiased bg-gray-50 dark:bg-gray-900 w-full h-full">
-        <nav class="bg-white border-gray-200 px-4 sm:ml-64 py-2.5 dark:bg-gray-800">
+        <nav class="bg-white border-gray-200 px-4 sm:ml-64 py-5 dark:bg-gray-800">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <a href="#" class="flex items-center">
 
