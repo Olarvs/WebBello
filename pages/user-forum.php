@@ -94,18 +94,15 @@ if (!isset($_SESSION['IDUSER'])) {
                             <span
                                 class="block text-sm text-gray-900 truncate dark:text-white"><?php echo $result[0]['email'] ?></span>
                         </div>
-                        <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+
+                        <!-- Profile Settings -->
+                        <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown" id="usersTblBody">
                             <li>
-                                <a href="#"
-                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My
-                                    profile</a>
+                                Hellogi
                             </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account
-                                    settings</a>
-                            </li>
+
                         </ul>
+                        <!-- End Profile Settings -->
 
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
@@ -258,6 +255,9 @@ if (!isset($_SESSION['IDUSER'])) {
 
     <!-- End of Forum page with sidebar and navbar -->
     <script defer>
+
+
+
     const forumMain = document.querySelector('#forumMain')
 
     window.onload = function() {
@@ -350,6 +350,9 @@ if (!isset($_SESSION['IDUSER'])) {
     </script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script defer>
+    //Profile
+const usersTblBody = document.querySelector('#usersTblBody');
+
     //Dark theme toggle 
     let themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     let themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -399,5 +402,70 @@ if (!isset($_SESSION['IDUSER'])) {
     } else {
         document.documentElement.classList.remove('dark')
     }
+
+
+
+    
+//load table
+const loadTable = async function(){
+    //api
+  const getUsers =  await fetch("../api/residents/all-residents.php");
+  const response = await getUsers.json();
+    console.log(response)
+  if(response.responseStatus === 'OK'){
+
+    let content = '';
+    response.responseContent.map((users)=>{
+        //by default inactive
+        let user = '<span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">Inactive</span>'
+
+        //change the badge color to active if active
+        if(users.status === 'Active'){
+          user =  '<span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">Active</span>'
+        }
+
+        content += ` <button id="btnView`+users.id+`" data-modal-toggle = "updateProductModal" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border    border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"  data-user='`+JSON.stringify(users)+`' onclick="updateModal(this)">
+                        <a href="#"
+                        class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                        My profile</a>
+                       </button>
+        `
+    })
+   
+    // <div class="inline-flex rounded-md shadow-sm" role="group">
+    //         <button id ="btnView`+users.id+`" type="button" data-modal-toggle = "updateProductModal" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border    border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"  data-user='`+JSON.stringify(users)+`' onclick="updateModal(this)" >
+    //                Edit
+    //         </button>
+
+    usersTblBody.innerHTML = content;
+
+  }
+}//end of onload
+
+// content += `<tr class="border-b dark:border-gray-700">
+//         <td class="px-4 py-3">`+users.firstname+" "+users.lastname+`</td>
+//         <td class="px-4 py-3">`+users.sex+`</td>
+//         <td class="px-4 py-3">`+users.age+`</td>
+//         <td class="px-4 py-3">`+users.address+`</td>
+//         <td class="px-4 py-3">`+users.contact+`</td>
+//         <td class="px-4 py-3">`+users.email+`</td>
+//         <td class="px-4 py-3">`+users.created_at+`</td>
+//         <td class="px-4 py-3">`+user+`</td>
+//         <td class="px-4 py-3 flex items-center justify-end">
+//         <div class="inline-flex rounded-md shadow-sm" role="group">
+//             <button id ="btnView`+users.id+`" type="button" data-modal-toggle = "updateProductModal" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border    border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"  data-user='`+JSON.stringify(users)+`' onclick="updateModal(this)" >
+//                    Edit
+//             </button>
+             
+//              <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+//              id ="btnDelete`+users.id+`"
+//              data-user='`+JSON.stringify(users)+`' onclick="deleteModal(this)">
+//               Delete
+//              </button>
+//         </div>                
+//         </div>
+//         </td>
+//         </tr>
+//         `
     </script>
 </body>
