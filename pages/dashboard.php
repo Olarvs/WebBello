@@ -4,7 +4,7 @@ require_once('../components/navbarDashboard.php');
 include_once("../connections/connection.php");
 $con = connection();
 
-    //get all hoa
+//get all hoa
 $sqlHoa = mysqli_query($con, "SELECT COUNT(*) as count FROM `tbl_hoa`");
 
 // Fetch the count
